@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>FloraFind — Local Search Engine</title>
+
+    <link
+        rel="stylesheet"
+        href="/style.css"
+    >
+</head>
+
+<body>
+
+    <!-- ======================================================
+         DECORATIVE BACKGROUND
+         ====================================================== -->
+
+    <div class="background-art" aria-hidden="true">
+
+        <div class="gradient-orb orb-pink"></div>
+        <div class="gradient-orb orb-blue"></div>
+        <div class="gradient-orb orb-violet"></div>
+
+        <div class="flower flower-one">✿</div>
+        <div class="flower flower-two">❀</div>
+        <div class="flower flower-three">✾</div>
+        <div class="flower flower-four">✿</div>
+
+        <div class="sparkle sparkle-one">✦</div>
+        <div class="sparkle sparkle-two">✧</div>
+        <div class="sparkle sparkle-three">✦</div>
+
+    </div>
+
+
+    <!-- ======================================================
+         MAIN
+         ====================================================== -->
+
+    <main class="app-shell">
+
+        <!-- ==================================================
+             HEADER
+             ================================================== -->
+
+        <header class="hero">
+
+            <div class="brand-mark">
+
+                <div class="flower-logo">
+                    ❀
+                </div>
+
+                <div class="brand-text">
+
+                    <div class="eyebrow">
+                        YOUR PERSONAL FILE FINDER
+                    </div>
+
+                    <h1>
+                        Flora<span>Find</span>
+                    </h1>
+
+                </div>
+
+            </div>
+
+            <p class="tagline">
+                Find your files by what you remember,
+                <strong>not by what you named them.</strong>
+            </p>
+
+        </header>
+
+
+        <!-- ==================================================
+             SEARCH PANEL
+             ================================================== -->
+
+        <section class="search-panel">
+
+            <div class="search-box">
+
+                <svg
+                    class="search-icon"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <circle
+                        cx="11"
+                        cy="11"
+                        r="7"
+                    ></circle>
+
+                    <path
+                        d="m20 20-4-4"
+                    ></path>
+                </svg>
+
+                <input
+                    id="search-input"
+                    type="search"
+                    placeholder="Search your files..."
+                    autocomplete="off"
+                    spellcheck="false"
+                >
+
+                <button
+                    id="clear-btn"
+                    class="clear-btn"
+                    type="button"
+                    aria-label="Clear search"
+                >
+                    ×
+                </button>
+
+                <div class="search-hint">
+                    <span>⌘</span>
+                    Search
+                </div>
+
+            </div>
+
+
+            <!-- FILE TYPE FILTERS -->
+
+            <div class="filter-section">
+
+                <span class="filter-label">
+                    <span class="mini-flower">✿</span>
+                    File type
+                </span>
+
+                <div class="filter-bar">
+
+                    <button
+                        class="filter-pill active"
+                        data-filter="all"
+                        type="button"
+                    >
+                        All files
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".txt"
+                        type="button"
+                    >
+                        TXT
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".py"
+                        type="button"
+                    >
+                        Python
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".md"
+                        type="button"
+                    >
+                        Markdown
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".csv"
+                        type="button"
+                    >
+                        CSV
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".json"
+                        type="button"
+                    >
+                        JSON
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".html"
+                        type="button"
+                    >
+                        HTML
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".htm"
+                        type="button"
+                    >
+                        HTM
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".xml"
+                        type="button"
+                    >
+                        XML
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".log"
+                        type="button"
+                    >
+                        LOG
+                    </button>
+
+                    <button
+                        class="filter-pill"
+                        data-filter=".docx"
+                        type="button"
+                    >
+                        DOCX
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             STATUS / STATS
+             ================================================== -->
+
+        <section class="dashboard-row">
+
+            <div class="status-card">
+
+                <div class="status-icon-wrap">
+                    <span id="status-icon">✿</span>
+                </div>
+
+                <div class="status-content">
+
+                    <span class="status-label">
+                        INDEX STATUS
+                    </span>
+
+                    <strong id="stats-info">
+                        Checking your index...
+                    </strong>
+
+                </div>
+
+                <span
+                    id="status-dot"
+                    class="status-dot"
+                ></span>
+
+            </div>
+
+
+            <button
+                id="reindex-btn"
+                class="update-btn"
+                type="button"
+            >
+
+                <span class="update-icon">
+                    ↻
+                </span>
+
+                <span id="update-text">
+                    Update Index
+                </span>
+
+            </button>
+
+        </section>
+
+
+        <!-- ==================================================
+             SEARCH META
+             ================================================== -->
+
+        <div
+            id="results-meta"
+            class="results-meta hidden"
+        >
+
+            <div>
+                <span class="results-title">
+                    Search results
+                </span>
+
+                <span
+                    id="result-count"
+                    class="result-count"
+                >
+                    0
+                </span>
+            </div>
+
+            <span id="search-time">
+                Ready
+            </span>
+
+        </div>
+
+
+        <!-- ==================================================
+             RESULTS
+             ================================================== -->
+
+        <section
+            id="results-container"
+            class="results-container"
+        >
+
+            <div class="welcome-card">
+
+                <div class="welcome-flower">
+                    ❀
+                </div>
+
+                <h2>
+                    Your files are waiting 🌸
+                </h2>
+
+                <p>
+                    Search for a topic, phrase, programming concept,
+                    note, or anything you remember from your files.
+                </p>
+
+                <div class="example-searches">
+
+                    <span>Try searching for</span>
+
+                    <button
+                        class="example-chip"
+                        data-query="python"
+                        type="button"
+                    >
+                        python
+                    </button>
+
+                    <button
+                        class="example-chip"
+                        data-query="project"
+                        type="button"
+                    >
+                        project
+                    </button>
+
+                    <button
+                        class="example-chip"
+                        data-query="assignment"
+                        type="button"
+                    >
+                        assignment
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ==================================================
+             FOOTER
+             ================================================== -->
+
+        <footer>
+
+            <span>
+                ❀ FloraFind
+            </span>
+
+            <span class="footer-separator">
+                •
+            </span>
+
+            <span>
+                Local &amp; private
+            </span>
+
+            <span class="footer-separator">
+                •
+            </span>
+
+            <span>
+                Zero dependencies
+            </span>
+
+        </footer>
+
+    </main>
+
+
+    <!-- ======================================================
+         TOAST
+         ====================================================== -->
+
+    <div
+        id="toast"
+        class="toast"
+        role="status"
+        aria-live="polite"
+    ></div>
+
+
+    <script src="/app.js"></script>
+
+</body>
+
+</html>
