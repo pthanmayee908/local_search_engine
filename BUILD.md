@@ -1,7 +1,7 @@
 # BUILD.md
 
 Build, run, and packaging instructions for the Local Search Engine
-("FloraFind" / "BlossomSearch").
+("FloraFind").
 
 ## Requirements
 
