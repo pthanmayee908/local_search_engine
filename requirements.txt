@@ -1,0 +1,20 @@
+# requirements.txt
+# =================
+# Local Search Engine — runtime dependencies
+#
+# There are none. This project runs entirely on the Python standard
+# library (see STDLIB.md for the full list of stdlib modules used,
+# and DEPENDENCY_PROOF.md / dependency_proof.py for a verifiable,
+# machine-checked proof of that claim).
+#
+# `pip install -r requirements.txt` is safe to run and will install
+# nothing.
+#
+# ---------------------------------------------------------------
+# Development-only dependencies (NOT required to run the app) live
+# in requirements-dev.txt and are only needed if you want to run the
+# automated test suite under tests/:
+#
+#     pip install -r requirements-dev.txt
+#     pytest
+# ---------------------------------------------------------------
